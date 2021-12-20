@@ -2,7 +2,8 @@ import React,{useState,useEffect,useContext} from "react";
 import {Navigate,useNavigate} from "react-router-dom";
 import { UserContext } from "../UserContext";
 function ProfileUpdate ()
-    {   const {CurrentUser,setCurrentUser}=useContext(UserContext);
+    {   
+      const {CurrentUser,setCurrentUser}=useContext(UserContext);
    
         const navigate=useNavigate();
         const initialValues = {  email:CurrentUser.email, age:"",phone:"" };
@@ -28,7 +29,7 @@ function ProfileUpdate ()
       navigate('/Login');
       else if(Object.keys(formErrors).length === 0 && isSubmit)
       {
-        fetch('http://localhost:3001/update', {
+        fetch("/update", {
           method: 'POST',
           body: JSON.stringify(formValues),
           headers: {
@@ -100,7 +101,7 @@ function ProfileUpdate ()
                     <input type="number" className="form-control" placeholder="New Phone"  name="phone" value={formValues.phone}
               onChange={handleChange} />
                 </div>
-              <button type="submit" onClick={handleSubmit} className="btn btn-dark btn-lg btn-block">Register</button>  
+              <button type="submit" onClick={handleSubmit} className="btn btn-dark btn-lg btn-block">Update Profile</button>  
             </form>
         );
         }
