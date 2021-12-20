@@ -1,7 +1,8 @@
 import React,{useState,useEffect} from "react";
 import {useNavigate} from "react-router-dom";
 function Signup ()
-    {   const initialValues = { name:"", email: "", password: "",confirmpassword:"" };
+    {
+      const initialValues = { name:"", email: "", password: "",confirmpassword:"" };
     const [formValues, setFormValues] = useState(initialValues);
     const [formErrors, setFormErrors] = useState({});
     const [isSubmit, setIsSubmit] = useState(false);
@@ -24,7 +25,7 @@ function Signup ()
       if (Object.keys(formErrors).length === 0 && isSubmit) {
         console.log(formValues);
         
-        fetch('http://localhost:3001/register', {
+        fetch("/register", {
         method: 'POST',
         body: JSON.stringify(formValues),
         headers: {
