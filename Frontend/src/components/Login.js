@@ -3,7 +3,8 @@ import {useNavigate,Navigate} from "react-router-dom"
 import { UserContext } from "../UserContext";
 
  function Login()
-   { 
+   {   const val="signin";
+   const url = `${process.env.REACT_API_URL}/${val}`
        const {CurrentUser,setCurrentUser}=useContext(UserContext);
       
     const navigate=useNavigate();
@@ -33,7 +34,7 @@ import { UserContext } from "../UserContext";
         e.preventDefault();
         console.log(formValues);
       
-        fetch('http://localhost:3001/signin', {
+        fetch("/signin", {
             method: 'POST',
             body: JSON.stringify(formValues),
             headers: {
